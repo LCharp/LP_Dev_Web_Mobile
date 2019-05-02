@@ -1,0 +1,6 @@
+{% extends "jeuxvideo/base.html" %}
+{% block contenu %}
+    <p><a href="{% url 'jeuxvideo:search' %}" class="top-menu">Rechercher un jeu</a></p>
+    <p><a href="{% url 'jeuxvideo:jeux-liste' %}" class="top-menu">Liste des jeux</a></p>
+    <p><a href="{% url 'film:film-liste' %}" class="top-menu">Liste des films</a></p>
+{% endblock %}

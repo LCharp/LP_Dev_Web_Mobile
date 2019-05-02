@@ -1,0 +1,15 @@
+{% extends "jeuxvideo/base.html" %}
+{% block contenu %}
+    <div class="list-group">
+      {% for Film in object_list %}
+      <a class="list-group-item list-group-item-action list-group-item-info flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{Film.name}}</h5>
+        </div>
+        <p class="mb-1">{{Film.sortie}}</p>
+
+      </a>
+      {% endfor %}
+    </div>
+
+{% endblock %}

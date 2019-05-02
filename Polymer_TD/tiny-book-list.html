@@ -1,0 +1,153 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="tiny-book-card.html">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<dom-module id="tiny-book-list">
+	<template>
+		<style include="iron-flex iron-flex-layout"></style>
+		<style>
+			:host {
+				width: 100%;
+				position: relative;
+				display: inline-block;
+			}
+
+			:host div.book-list-content {
+				position: relative;
+				width: 100%;
+				justify-content: space-around;
+			}
+
+			span.new {
+				border-radius: 3px;
+				padding: 2px 2px;
+				margin-left: 1px;
+				margin-right: 1px;
+				background-color: darkred;
+				color: white;
+			}
+		</style>
+
+		<span class="new button" on-tap="openNewDialog">Ajouter</span>
+		<div class="book-list-content flex layout horizontal wrap">
+			<template id="items" is="dom-repeat" items="{{books}}">
+				<tiny-book-card data="{{item}}"></tiny-book-card>
+			</template>
+		</div>
+
+
+		<paper-dialog id="newDialog" modal>
+			<h2>Edition :</h2>
+			<label for="newTitle">Titre</label><input type="text" name="newTitle" value="" required>
+			<label for="newAuthor">Auteur</label><input type="text" name="newAuthor" value="" required>
+			<label for="newPrice">Prix</label><input type="text" name="newPrice" value="" required>
+			<input type="file" name="newImg" required>
+			<div class="buttons">
+				<span dialog-confirm autofocus on-tap="fireNewEvent">OK</span>
+				<span dialog-dismiss>Annuler</span>
+			</div>
+		</paper-dialog>
+	</template>
+	<script>
+		Polymer({
+			is: "tiny-book-list",
+			properties: {
+				books: {
+					type: Array,
+					notify: true
+				},
+				db: {
+					type: Object,
+					notify: true
+				}
+			},
+
+			ready: function() {
+				const db = new PouchDB('tiny-books-db', {
+					skip_setup: true
+				});
+				db.info().then(() =>
+						this.db = db
+					)
+					.catch(e =>
+						console.log('db not found')
+					);
+			},
+
+			openNewDialog: function() {
+				document.getElementById('newDialog').toggle();
+			},
+
+			addNewEntry: function(author, title, price, image_as_base64, type) {
+				let new_id = 0;
+				const db = this.db;
+
+				db.info().then(
+					r => new_id = r.update_seq + 1
+				).then(function(r) {
+					db.put({
+						_id: new_id.toString(),
+						title: title,
+						price: price,
+						author: author,
+						img: {
+							content_type: type,
+							filename: "",
+							data: image_as_base64,
+							path: ""
+						}
+					}).then(function(r) {
+						//console.log(r);
+					}).catch(function(e) {
+						console.log(e);
+					});
+				}).catch(function(e) {
+					console.log(e);
+				});
+
+				if (typeof global_pager_reload_callback !== 'undefined' && global_pager_reload_callback !== null) {
+					global_pager_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call pager reload callback');
+				}
+
+				if (typeof global_db_reload_callback !== 'undefined' && global_db_reload_callback !== null) {
+					global_db_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call database reload callback');
+				}
+
+			},
+
+			fireNewEvent: function() {
+				let required = document.querySelectorAll('input[required]');
+				for (let i = 0; i < required.length; i++) {
+					let req = required[i];
+					if (typeof req.value === 'undefined' || req.value == null || req.value == "") {
+						console.log('tiny-book-list: one or more required fields arent completed');
+						return;
+					}
+				}
+
+				const file = document.getElementsByName('newImg')[0].files[0];
+				const that = this;
+				var reader = new FileReader();
+
+				reader.addEventListener('load', function(e) {
+					that.addNewEntry(
+						document.getElementsByName('newAuthor')[0].value,
+						document.getElementsByName('newTitle')[0].value,
+						document.getElementsByName('newPrice')[0].value,
+						e.target.result.split('base64,')[1],
+						file.type
+					);
+				});
+				reader.readAsDataURL(file);
+			},
+		});
+	</script>
+</dom-module>

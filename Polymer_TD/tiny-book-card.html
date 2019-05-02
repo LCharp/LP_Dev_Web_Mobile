@@ -1,0 +1,251 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="tiny-book-card">
+
+	<template>
+		<style include="iron-flex iron-flex-layout"></style>
+		<style>
+			@media (min-width: 300px) {
+				paper-card.book-card { 
+				width: 98%; 
+				}
+			}
+			@media (min-width: 700px) {
+				paper-card.book-card { 
+				width: 48.5%; 
+				}
+			}
+			@media (min-width: 1024px) {
+				paper-card.book-card {
+				width: 32%; 
+				}
+			}
+			:host {
+				width: 100%;
+				position: relative;
+				display: inline-block;
+			}
+			paper-card.book-card {
+				margin: 3px;
+				height: 120px;
+			}
+			div.book-card-cover {
+				width: 120px;
+				min-width: 120px;
+				display: inline-block;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-color: #dde;
+				background-position-x: center;
+			}
+			div.book-card-info {
+				height: 100%;
+				display: inline-block;
+				padding-right: 10px;
+				text-align: right;
+			}
+			div.book-card-info-title {
+				font-weight: bold;
+			}
+			div.book-card-action {
+				position: absolute;
+			}
+			div.book-card-action span {
+				border-radius: 3px;
+				padding: 2px 2px;
+				margin-left: 1px;
+				margin-right: 1px;
+			}
+			div.book-card-action span.remove {
+				background-color: darkred;
+				color: white;
+			}
+			div.book-card-action span.edit {
+				background-color: darkred;
+				color: white;
+			}
+			div.book-card-action span.info {
+				background-color: darkred;
+				color: white;
+			}
+		</style>
+		<paper-card class="book-card layout horizontal" >
+			<div class="book-card-cover" style="background-image: url(data:{{data.img.type}};base64,{{data.img.data}})"></div>
+			<div class="book-card-info flex vertical">
+				<div class="book-card-info-title">{{data.title}}</div>
+				<div class="book-card-info-author">{{data.author}}</div>
+				<div class="book-card-info-price">{{data.price}}&euro;</div>
+				<div class="book-card-action div_buttons">
+					<span class="info button" on-tap="openInfoDialog">Voir</span>
+					<span class="edit button" on-tap="openEditDialog">Modifier</span>
+					<span class="remove button" on-tap="openDeleteDialog">Supprimer</span>
+				</div>
+			</div>
+		</paper-card>
+
+		<paper-dialog id="infoDialog{{data._id}}" modal>
+			<h2>Informations </h2>
+			<div class="book-card-info-title">{{data.title}}</div>
+			<div class="book-card-info-author">{{data.author}}</div>
+			<div class="book-card-info-price">{{data.price}}&euro;</div>
+			<div class="buttons">
+				<span dialog-confirm autofocus>Valider</span>
+			</div>
+		</paper-dialog>
+
+		<paper-dialog id="editDialog{{data._id}}" modal>
+			<h2>Modifier</h2>
+			<label for="editTitle{{data._id}}">Titre</label><input type="text" name="editTitle{{data._id}}" value="{{data.title}}">
+			<label for="editAuthor{{data._id}}">Auteur</label><input type="text" name="editAuthor{{data._id}}" value="{{data.author}}">
+			<label for="editPrice{{data._id}}">Prix</label><input type="text" name="editPrice{{data._id}}" value="{{data.price}}">
+			<input type="file" name="editImg{{data._id}}">
+			<input type="hidden" name="oldImgData{{data._id}}" value="{{data.img.data}}">
+			<input type="hidden" name="oldImgType{{data._id}}" value="{{data.img.type}}">
+			<div class="buttons">
+				<span dialog-confirm autofocus on-tap="fireEditEvent">Valider</span>
+				<span dialog-dismiss>Annuler</span>
+			</div>
+		</paper-dialog>
+
+		<paper-dialog id="deleteDialog{{data._id}}" modal>
+			<p>Etes vous sur de vouloir supprimer cet élément ( {{ data.title }} ) ?</p>
+			<div class="buttons">
+				<span dialog-confirm autofocus on-tap="fireDeleteEvent">Valider</span>
+				<span dialog-dismiss>Annuler</span>
+			</div>
+		</paper-dialog>
+
+	</template>
+
+	<script>
+		Polymer({
+			is: "tiny-book-card",
+			properties: {
+				data: {
+					type: Object
+				},
+				db: {
+					type: Object,
+					notify: true
+				}
+			},
+
+			ready: function() {
+				const db = new PouchDB('tiny-books-db', {
+					skip_setup: true
+				});
+
+				db.info().then(() =>
+						this.db = db
+					)
+					.catch(e =>
+						console.log('Probleme de connexion a la base de données')
+					);
+			},
+
+			openDeleteDialog: function(){
+				document.getElementById('deleteDialog' + this.data._id).toggle();
+			},
+
+			openEditDialog: function(){
+				document.getElementById('editDialog' + this.data._id).toggle();
+			},
+
+			openInfoDialog: function(){
+				document.getElementById('infoDialog' + this.data._id).toggle();
+			},
+
+			fireEditEvent: function(){
+				const file = document.getElementsByName('editImg' + this.data._id)[0].files[0];
+
+				if (typeof file === 'undefined' || file == null) {
+					this.updateEntry(
+						this.data._id,
+						document.getElementsByName('editAuthor' + this.data._id)[0].value,
+						document.getElementsByName('editTitle' + this.data._id)[0].value,
+						document.getElementsByName('editPrice' + this.data._id)[0].value,
+						document.getElementsByName('oldImgData' + this.data._id)[0].value,
+						document.getElementsByName('oldImgType' + this.data._id)[0].value
+					);
+				} else {
+					const that = this;
+					var reader = new FileReader();
+					reader.addEventListener('load', function(e) {
+						that.updateEntry(
+							that.data._id,
+							document.getElementsByName('editAuthor' + that.data._id)[0].value,
+							document.getElementsByName('editTitle' + that.data._id)[0].value,
+							document.getElementsByName('editPrice' + that.data._id)[0].value,
+							e.target.result.split('base64,')[1],
+							file.type
+						);
+					});
+					reader.readAsDataURL(file);
+				}
+			},
+
+			fireDeleteEvent: function() {
+				this.deleteEntry(this.data._id);
+			},
+
+			updateEntry: function(id, author, title, price, image_as_base64, type) {
+				const db = this.db;
+				db.get(id).then(function(doc) {
+					db.put({
+						_id: doc._id,
+						title: title,
+						price: price,
+						author: author,
+						img: {
+							content_type: type,
+							filename: "",
+							data: image_as_base64,
+							path: ""
+						},
+						_rev: doc._rev
+					}).then(function(r) {
+						console.log(r);
+					}).catch(function(e) {
+						console.log(e);
+					});
+				}).catch(function(e) {
+					console.log(e);
+				});
+				if (typeof global_pager_reload_callback !== 'undefined' && global_pager_reload_callback !== null) {
+					global_pager_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call pager reload callback');
+				}
+				if (typeof global_db_reload_callback !== 'undefined' && global_db_reload_callback !== null) {
+					global_db_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call database reload callback');
+				}
+			},
+
+			deleteEntry: function(id) {
+				const db = this.db;
+				db.get(id).then(function(doc) {
+					doc._deleted = true;
+					db.put(doc);
+				}).catch(e => {
+					console.log(e);
+				});
+				if (typeof global_pager_reload_callback !== 'undefined' && global_pager_reload_callback !== null) {
+					global_pager_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call pager reload callback');
+				}
+				if (typeof global_db_reload_callback !== 'undefined' && global_db_reload_callback !== null) {
+					global_db_reload_callback();
+				} else {
+					console.log('tiny-book-list: cannot call database reload callback');
+				}
+			}
+		});
+</script>
+<dom-module>

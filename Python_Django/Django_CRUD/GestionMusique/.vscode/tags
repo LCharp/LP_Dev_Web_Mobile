@@ -1,0 +1,89 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001_initial.py	../musiques/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_morceau_date_sortie.py	../musiques/migrations/0002_morceau_date_sortie.py	1;"	kind:file	line:1
+0003_auto_20171005_0919.py	../musiques/migrations/0003_auto_20171005_0919.py	1;"	kind:file	line:1
+0004_auto_20171005_0920.py	../musiques/migrations/0004_auto_20171005_0920.py	1;"	kind:file	line:1
+ALLOWED_HOSTS	../GestionMusique/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	../GestionMusique/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:88
+Artiste	../musiques/models.py	/^class Artiste(models.Model):$/;"	kind:class	line:6
+ArtisteDetailView	../musiques/views.py	/^class ArtisteDetailView(DetailView):$/;"	kind:class	line:14
+BASE_DIR	../GestionMusique/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../GestionMusique/settings.py	/^DATABASES = {$/;"	kind:variable	line:77
+DEBUG	../GestionMusique/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+INSTALLED_APPS	../GestionMusique/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+LANGUAGE_CODE	../GestionMusique/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:107
+MIDDLEWARE	../GestionMusique/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:43
+Migration	../musiques/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../musiques/migrations/0002_morceau_date_sortie.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../musiques/migrations/0003_auto_20171005_0919.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../musiques/migrations/0004_auto_20171005_0920.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:24
+Morceau	../musiques/models.py	/^class Morceau(models.Model):$/;"	kind:class	line:10
+MorceauDetailView	../musiques/views.py	/^class MorceauDetailView(DetailView):$/;"	kind:class	line:9
+MorceauTestCase	../musiques/tests.py	/^class MorceauTestCase(TestCase):$/;"	kind:class	line:10
+MusiquesConfig	../musiques/apps.py	/^class MusiquesConfig(AppConfig):$/;"	kind:class	line:4
+ROOT_URLCONF	../GestionMusique/settings.py	/^ROOT_URLCONF = 'GestionMusique.urls'$/;"	kind:variable	line:53
+SECRET_KEY	../GestionMusique/settings.py	/^SECRET_KEY = '5^($trk%cr(o0@_bze4whzxo42i-4xkl0th+g-ii#-=m3kv@s1'$/;"	kind:variable	line:23
+STATIC_URL	../GestionMusique/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:121
+TEMPLATES	../GestionMusique/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:55
+TIME_ZONE	../GestionMusique/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:109
+USE_I18N	../GestionMusique/settings.py	/^USE_I18N = True$/;"	kind:variable	line:111
+USE_L10N	../GestionMusique/settings.py	/^USE_L10N = True$/;"	kind:variable	line:113
+USE_TZ	../GestionMusique/settings.py	/^USE_TZ = True$/;"	kind:variable	line:115
+WSGI_APPLICATION	../GestionMusique/settings.py	/^WSGI_APPLICATION = 'GestionMusique.wsgi.application'$/;"	kind:variable	line:71
+__init__.py	../GestionMusique/__init__.py	1;"	kind:file	line:1
+__init__.py	../musiques/__init__.py	1;"	kind:file	line:1
+__init__.py	../musiques/migrations/__init__.py	1;"	kind:file	line:1
+__str__	../musiques/models.py	/^    def __str__(self):$/;"	kind:member	line:17
+admin.py	../musiques/admin.py	1;"	kind:file	line:1
+annuler_migrer_artiste	../musiques/migrations/0004_auto_20171005_0920.py	/^def annuler_migrer_artiste(apps, schema):$/;"	kind:function	line:17
+app_name	../musiques/urls.py	/^app_name = 'musiques'$/;"	kind:variable	line:5
+application	../GestionMusique/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../musiques/apps.py	1;"	kind:file	line:1
+artiste	../musiques/models.py	/^    artiste = models.CharField(max_length=64)$/;"	kind:variable	line:12
+artiste_fk	../musiques/models.py	/^    artiste_fk = models.ForeignKey($/;"	kind:variable	line:13
+date_sortie	../musiques/models.py	/^    date_sortie = models.DateField(null=True)$/;"	kind:variable	line:15
+dependencies	../musiques/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../musiques/migrations/0002_morceau_date_sortie.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../musiques/migrations/0003_auto_20171005_0919.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../musiques/migrations/0004_auto_20171005_0920.py	/^    dependencies = [$/;"	kind:variable	line:26
+field	../musiques/migrations/0002_morceau_date_sortie.py	/^            field=models.DateField(null=True),$/;"	kind:variable	line:18
+field	../musiques/migrations/0003_auto_20171005_0919.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='musiques.Artiste'),$/;"	kind:variable	line:26
+fields	../musiques/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+fields	../musiques/migrations/0003_auto_20171005_0919.py	/^            fields=[$/;"	kind:variable	line:18
+initial	../musiques/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+manage.py	../manage.py	1;"	kind:file	line:1
+migrer_artiste	../musiques/migrations/0004_auto_20171005_0920.py	/^def migrer_artiste(apps, schema):$/;"	kind:function	line:8
+model	../musiques/views.py	/^    model = Artiste$/;"	kind:variable	line:15
+model	../musiques/views.py	/^    model = Morceau$/;"	kind:variable	line:10
+model_name	../musiques/migrations/0002_morceau_date_sortie.py	/^            model_name='morceau',$/;"	kind:variable	line:16
+model_name	../musiques/migrations/0003_auto_20171005_0919.py	/^            model_name='morceau',$/;"	kind:variable	line:24
+models.py	../musiques/models.py	1;"	kind:file	line:1
+name	../musiques/apps.py	/^    name = 'musiques'$/;"	kind:variable	line:5
+name	../musiques/migrations/0001_initial.py	/^            name='Morceau',$/;"	kind:variable	line:17
+name	../musiques/migrations/0002_morceau_date_sortie.py	/^            name='date_sortie',$/;"	kind:variable	line:17
+name	../musiques/migrations/0003_auto_20171005_0919.py	/^            name='Artiste',$/;"	kind:variable	line:17
+name	../musiques/migrations/0003_auto_20171005_0919.py	/^            name='artiste_fk',$/;"	kind:variable	line:25
+nom	../musiques/models.py	/^    nom = models.CharField(max_length=64)$/;"	kind:variable	line:7
+operations	../musiques/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../musiques/migrations/0002_morceau_date_sortie.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../musiques/migrations/0003_auto_20171005_0919.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../musiques/migrations/0004_auto_20171005_0920.py	/^    operations = [$/;"	kind:variable	line:30
+setUp	../musiques/tests.py	/^    def setUp(self):$/;"	kind:member	line:11
+settings.py	../GestionMusique/settings.py	1;"	kind:file	line:1
+template_name	../musiques/views.py	/^    template_name = 'musiques\/artiste.html'$/;"	kind:variable	line:16
+template_name	../musiques/views.py	/^    template_name = 'musiques\/morceau.html'$/;"	kind:variable	line:11
+test_morceau_url	../musiques/tests.py	/^    def test_morceau_url(self):$/;"	kind:member	line:22
+test_morceau_url_name	../musiques/tests.py	/^    def test_morceau_url_name(self):$/;"	kind:member	line:16
+tests.py	../musiques/tests.py	1;"	kind:file	line:1
+titre	../musiques/models.py	/^    titre = models.CharField(max_length=64)$/;"	kind:variable	line:11
+urlpatterns	../GestionMusique/urls.py	/^urlpatterns = [$/;"	kind:variable	line:19
+urlpatterns	../musiques/urls.py	/^urlpatterns = [$/;"	kind:variable	line:6
+urls.py	../GestionMusique/urls.py	1;"	kind:file	line:1
+urls.py	../musiques/urls.py	1;"	kind:file	line:1
+views.py	../musiques/views.py	1;"	kind:file	line:1
+wsgi.py	../GestionMusique/wsgi.py	1;"	kind:file	line:1

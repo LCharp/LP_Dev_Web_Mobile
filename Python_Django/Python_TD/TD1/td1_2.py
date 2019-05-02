@@ -1,0 +1,3 @@
+def somme_personne():
+
+    

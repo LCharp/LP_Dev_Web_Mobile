@@ -1,0 +1,48 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="tiny-book-list.html">
+<link rel="import" href="tiny-pouchdb.html">
+
+<dom-module id="tiny-app">
+	<template>
+		<style include="iron-flex iron-flex-layout"></style>
+		<style>
+		:host tiny-book-list {
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		
+		:host paper-button.toolbar-button {
+			background-color: #ff92a1;
+		}
+		</style>
+		<tiny-pouchdb 
+			name="tiny-books-db"
+			initsrc="books.json"
+			books="{{elements}}"
+			id="db">
+		</tiny-pouchdb>
+		<paper-header-panel class="flex">
+			<paper-toolbar>
+				<div>Tiny Amazon</div>
+				<span class="flex"></span>
+				<paper-button class="toolbar-button" on-tap="_reset">Reset</paper-button>
+			</paper-toolbar>
+			<tiny-book-list books="{{elements}}"></tiny-book-list>
+		</paper-header-panel>
+	</template>
+	<script>
+		Polymer({
+			is: "tiny-app",
+			properties: {
+				elements: {
+				type: Array,
+				notify: true
+				}
+			}
+		});
+	</script>
+</dom-module>

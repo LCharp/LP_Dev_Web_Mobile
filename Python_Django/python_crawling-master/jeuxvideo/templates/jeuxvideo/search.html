@@ -1,0 +1,7 @@
+{% extends "jeuxvideo/base.html" %}
+{% block contenu %}
+    <form action="{% url 'jeuxvideo:result' %}" method="get">
+        <p>Nom du jeu : <input type="text" name="name" id="name"></p>
+        <input type="submit" value="Submit">
+    </form> 
+{% endblock %}

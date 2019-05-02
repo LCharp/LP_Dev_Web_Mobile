@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'images/igbd_logo.png' %}" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/jeuxvideo.css' %}">
+    <title>Portail Univers JV</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{% url 'jeuxvideo:home' %}">
+            <img src = "{% static 'images/igbd_logo.png' %}" alt="Logo">
+        </div>
+        <div class="col-md-7">
+            <h1>Portail Univers JV</h1>
+            </a>
+            <hr>
+        </div>
+        <nav class="content container">
+            <div class="col-md-6">
+                {% block contenu %}
+                {% endblock %}
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

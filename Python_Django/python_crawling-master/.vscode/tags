@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOWED_HOSTS	../ProjetCrawling/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	../ProjetCrawling/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:88
+BASE_DIR	../ProjetCrawling/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../ProjetCrawling/settings.py	/^DATABASES = {$/;"	kind:variable	line:77
+DEBUG	../ProjetCrawling/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+INSTALLED_APPS	../ProjetCrawling/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+Jeux	../jeuxvideo/models.py	/^class Jeux(models.Model):$/;"	kind:class	line:4
+JeuxListView	../jeuxvideo/views.py	/^class JeuxListView(ListView):$/;"	kind:class	line:11
+JeuxvideoConfig	../jeuxvideo/apps.py	/^class JeuxvideoConfig(AppConfig):$/;"	kind:class	line:4
+LANGUAGE_CODE	../ProjetCrawling/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:107
+MIDDLEWARE	../ProjetCrawling/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:43
+ROOT_URLCONF	../ProjetCrawling/settings.py	/^ROOT_URLCONF = 'ProjetCrawling.urls'$/;"	kind:variable	line:53
+SECRET_KEY	../ProjetCrawling/settings.py	/^SECRET_KEY = 'exf$$1tcepw6cgava$(ns5(rik2scy&q!r2(drr@ny)mo3!%04'$/;"	kind:variable	line:23
+STATIC_URL	../ProjetCrawling/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:121
+TEMPLATES	../ProjetCrawling/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:55
+TIME_ZONE	../ProjetCrawling/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:109
+USE_I18N	../ProjetCrawling/settings.py	/^USE_I18N = True$/;"	kind:variable	line:111
+USE_L10N	../ProjetCrawling/settings.py	/^USE_L10N = True$/;"	kind:variable	line:113
+USE_TZ	../ProjetCrawling/settings.py	/^USE_TZ = True$/;"	kind:variable	line:115
+WSGI_APPLICATION	../ProjetCrawling/settings.py	/^WSGI_APPLICATION = 'ProjetCrawling.wsgi.application'$/;"	kind:variable	line:71
+__init__.py	../ProjetCrawling/__init__.py	1;"	kind:file	line:1
+__init__.py	../jeuxvideo/__init__.py	1;"	kind:file	line:1
+__init__.py	../jeuxvideo/migrations/__init__.py	1;"	kind:file	line:1
+__str__	../jeuxvideo/models.py	/^    def __str__(self):$/;"	kind:member	line:5
+admin.py	../jeuxvideo/admin.py	1;"	kind:file	line:1
+app_name	../jeuxvideo/urls.py	/^app_name = 'jeuxvideo'$/;"	kind:variable	line:5
+application	../ProjetCrawling/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../jeuxvideo/apps.py	1;"	kind:file	line:1
+jeux_detail	../jeuxvideo/views.py	/^def jeux_detail(request,pk):$/;"	kind:function	line:5
+manage.py	../manage.py	1;"	kind:file	line:1
+model	../jeuxvideo/views.py	/^    model = Jeux$/;"	kind:variable	line:12
+models.py	../jeuxvideo/models.py	1;"	kind:file	line:1
+name	../jeuxvideo/apps.py	/^    name = 'jeuxvideo'$/;"	kind:variable	line:5
+settings.py	../ProjetCrawling/settings.py	1;"	kind:file	line:1
+template_name	../jeuxvideo/views.py	/^    template_name = 'jeuxvideo\/test.html'/;"	kind:variable	line:13
+tests.py	../jeuxvideo/tests.py	1;"	kind:file	line:1
+urlpatterns	../ProjetCrawling/urls.py	/^urlpatterns = [$/;"	kind:variable	line:19
+urlpatterns	../jeuxvideo/urls.py	/^urlpatterns = [$/;"	kind:variable	line:6
+urls.py	../ProjetCrawling/urls.py	1;"	kind:file	line:1
+urls.py	../jeuxvideo/urls.py	1;"	kind:file	line:1
+views.py	../jeuxvideo/views.py	1;"	kind:file	line:1
+wsgi.py	../ProjetCrawling/wsgi.py	1;"	kind:file	line:1

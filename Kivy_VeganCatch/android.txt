@@ -1,0 +1,2 @@
+title=Lapinauthor=Lucas Charpentier
+orientation=landscape
